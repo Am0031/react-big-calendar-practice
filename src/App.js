@@ -3,6 +3,7 @@ import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import { Banner } from "./components/Banner";
 import { MyCalendar } from "./components/Calendar";
+import { DayTimeline } from "./components/Timeline";
 
 export const App = () => {
   return (
@@ -22,6 +23,10 @@ export const App = () => {
 
       <Box>
         <MyCalendar title="My big calendar" />
+      </Box>
+
+      <Box>
+        <DayTimeline title="Date of selected day" />
       </Box>
     </Stack>
   );
