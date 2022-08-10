@@ -47,6 +47,9 @@ export const MyCalendar = ({ title }) => {
           );
           console.log(eventsForThisDay);
         }}
+        onSelectEvent={(eventInfo) => {
+          console.log(eventInfo);
+        }}
         selectable
         popup={true}
       />
