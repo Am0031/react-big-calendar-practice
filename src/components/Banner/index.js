@@ -7,6 +7,7 @@ export const Banner = ({ title, subTitle }) => {
       maxWidth="md"
       sx={{
         py: "40px",
+        my: 1,
         backgroundColor: "#006d77",
         color: "#ffffff",
         borderRadius: "4px",

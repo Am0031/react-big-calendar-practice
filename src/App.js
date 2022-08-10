@@ -13,7 +13,7 @@ export const App = () => {
       spacing={8}
       sx={{
         backgroundColor: "#FFFFFF",
-        height: "100vh",
+        minHeight: "100vh",
       }}
     >
       <Box>

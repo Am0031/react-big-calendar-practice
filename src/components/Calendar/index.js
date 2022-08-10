@@ -1,4 +1,5 @@
 import { Calendar, momentLocalizer } from "react-big-calendar";
+import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
@@ -23,7 +24,13 @@ const myEventsList = [
 
 export const MyCalendar = ({ title }) => {
   return (
-    <div className="myCustomHeight">
+    <Container
+      className="myCustomHeight"
+      sx={{
+        px: "40px",
+        my: 2,
+      }}
+    >
       <Typography variant="h5" component="h2" gutterBottom align="center">
         {title}
       </Typography>
@@ -43,6 +50,6 @@ export const MyCalendar = ({ title }) => {
         selectable
         popup={true}
       />
-    </div>
+    </Container>
   );
 };
