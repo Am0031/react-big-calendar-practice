@@ -1,14 +1,10 @@
 import * as React from "react";
 import Timeline from "@mui/lab/Timeline";
-import TimelineItem from "@mui/lab/TimelineItem";
-import TimelineSeparator from "@mui/lab/TimelineSeparator";
-import TimelineConnector from "@mui/lab/TimelineConnector";
-import TimelineContent from "@mui/lab/TimelineContent";
-import TimelineDot from "@mui/lab/TimelineDot";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
+import { TimelineEvent } from "./TimelineEvent";
 
-export const DayTimeline = ({ title }) => {
+export const DayTimeline = ({ selectedDate, selectedDateData }) => {
   return (
     <Container
       className="myCustomHeight"
@@ -18,29 +14,12 @@ export const DayTimeline = ({ title }) => {
       }}
     >
       <Typography variant="h5" component="h2" gutterBottom align="center">
-        {title}
+        {selectedDate}
       </Typography>
       <Timeline>
-        <TimelineItem>
-          <TimelineSeparator>
-            <TimelineDot />
-            <TimelineConnector />
-          </TimelineSeparator>
-          <TimelineContent>Eat</TimelineContent>
-        </TimelineItem>
-        <TimelineItem>
-          <TimelineSeparator>
-            <TimelineDot />
-            <TimelineConnector />
-          </TimelineSeparator>
-          <TimelineContent>Code</TimelineContent>
-        </TimelineItem>
-        <TimelineItem>
-          <TimelineSeparator>
-            <TimelineDot />
-          </TimelineSeparator>
-          <TimelineContent>Sleep</TimelineContent>
-        </TimelineItem>
+        {selectedDateData.map((event) => {
+          return <TimelineEvent title={event.title} />;
+        })}
       </Timeline>
     </Container>
   );

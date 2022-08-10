@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
+import { DayTimeline } from "../Timeline";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
@@ -23,6 +25,22 @@ const myEventsList = [
 ];
 
 export const MyCalendar = ({ title }) => {
+  //setting up state variables at calendar level
+  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedDateData, setSelectedDateData] = useState([]);
+
+  //setting up the functions to handle the state change
+  const handleSelectDate = (event) => {
+    const { start, end } = event;
+    const eventsForThisDay = myEventsList.filter(
+      (item) => item.start >= start && item.end < end
+    );
+
+    const formattedDate = moment(start).format("DD-MM-YYYY");
+    setSelectedDate(formattedDate);
+    setSelectedDateData(eventsForThisDay);
+  };
+
   return (
     <Container
       className="myCustomHeight"
@@ -40,19 +58,20 @@ export const MyCalendar = ({ title }) => {
         startAccessor="start"
         endAccessor="end"
         style={{ height: 500 }}
-        onSelectSlot={(slotInfo) => {
-          const { start, end } = slotInfo;
-          const eventsForThisDay = myEventsList.filter(
-            (event) => event.start >= start && event.end < end
-          );
-          console.log(eventsForThisDay);
-        }}
+        onSelectSlot={handleSelectDate}
         onSelectEvent={(eventInfo) => {
           console.log(eventInfo);
         }}
         selectable
         popup={true}
       />
+      {selectedDateData && (
+        <DayTimeline
+          title="Date of selected day"
+          selectedDate={selectedDate}
+          selectedDateData={selectedDateData}
+        />
+      )}
     </Container>
   );
 };
