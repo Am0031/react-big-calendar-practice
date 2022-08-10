@@ -22,6 +22,26 @@ const myEventsList = [
     end: moment(new Date()).add(5, "days"),
     title: "meeting",
   },
+  {
+    start: moment(new Date()).add(7, "days"),
+    end: moment(new Date()).add(7, "days"),
+    title: "visit 1",
+  },
+  {
+    start: moment(new Date()).add(7, "days"),
+    end: moment(new Date()).add(7, "days"),
+    title: "visit 2",
+  },
+  {
+    start: moment(new Date()).add(7, "days"),
+    end: moment(new Date()).add(7, "days"),
+    title: "visit 3",
+  },
+  {
+    start: moment(new Date()).add(7, "days"),
+    end: moment(new Date()).add(7, "days"),
+    title: "visit 4",
+  },
 ];
 
 export const MyCalendar = ({ title }) => {
