@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Stack from "@mui/material/Stack";
+import Box from "@mui/material/Box";
+import { Banner } from "./components/Banner";
+import { MyCalendar } from "./components/Calendar";
 
-function App() {
+export const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <Stack
+      direction="column"
+      justifyContent="space-evenly"
+      alignItems="stretch"
+      spacing={8}
+      sx={{
+        backgroundColor: "#FFFFFF",
+        height: "100vh",
+      }}
+    >
+      <Box>
+        <Banner title="Social Network App" subTitle="Why not join in!" />
+      </Box>
 
-export default App;
+      <Box>
+        <MyCalendar title="My big calendar" />
+      </Box>
+    </Stack>
+  );
+};
