@@ -12,18 +12,18 @@ export const Dashboard = () => {
   // context hook to get the date clicked on
   const [getDashboard, { data, loading, error }] =
     useLazyQuery(DASHBOARD_QUERY);
-
+  const userId = "62f76f2cb4d77124d46d166d";
   useEffect(() => {
     async function fetchData() {
       // You can await here
       await getDashboard({
         variables: {
-          userId: "62f76f2cb4d77124d46d166d",
+          userId: userId,
         },
       });
     }
     fetchData();
-  });
+  }, [getDashboard]);
 
   return (
     <Stack
