@@ -23,7 +23,7 @@ export const Dashboard = () => {
       });
     }
     fetchData();
-  }, []);
+  });
 
   return (
     <Stack
@@ -52,6 +52,7 @@ export const Dashboard = () => {
 
       <Box>
         <h1>Other buttons and accesses</h1>
+        <Button>Another Button</Button>
       </Box>
     </Stack>
   );
