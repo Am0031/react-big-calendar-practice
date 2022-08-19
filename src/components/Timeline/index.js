@@ -17,8 +17,8 @@ export const DayTimeline = ({ selectedDate, selectedDateData }) => {
         {selectedDate}
       </Typography>
       <Timeline>
-        {selectedDateData.map((event) => {
-          return <TimelineEvent title={event.title} />;
+        {selectedDateData.map((event, i) => {
+          return <TimelineEvent title={event.title} key={i} />;
         })}
       </Timeline>
     </Container>
