@@ -5,6 +5,7 @@ import Button from "@mui/material/Button";
 import { Banner } from "../components/Banner";
 import { MyCalendar } from "../components/Calendar";
 import { DASHBOARD_QUERY } from "../queries/dashboard";
+import { useEffect } from "react";
 
 export const Dashboard = () => {
   //   const [selectDay, { loading, error, data }] = useLazyQuery(SEARCH_QUERY);
@@ -12,23 +13,17 @@ export const Dashboard = () => {
   const [getDashboard, { data, loading, error }] =
     useLazyQuery(DASHBOARD_QUERY);
 
-  const renderCalendar = (event) => {
-    event.preventDefault();
-
-    console.log("button clicked");
-    getDashboard({
-      variables: {
-        userId: "62f76f2cb4d77124d46d166d",
-      },
-    });
-  };
-
-  let calendarData;
-  !data
-    ? (calendarData = [])
-    : (calendarData = data.carerDashboard.appointments);
-
-  console.log(calendarData);
+  useEffect(() => {
+    async function fetchData() {
+      // You can await here
+      await getDashboard({
+        variables: {
+          userId: "62f76f2cb4d77124d46d166d",
+        },
+      });
+    }
+    fetchData();
+  }, []);
 
   return (
     <Stack
@@ -49,10 +44,10 @@ export const Dashboard = () => {
       </Box>
 
       <Box>
-        <Button variant="contained" key="calendar-btn" onClick={renderCalendar}>
-          Load my Calendar
-        </Button>
-        <MyCalendar title="My big calendar" data={calendarData} />
+        <MyCalendar
+          title="My big calendar"
+          data={data?.carerDashboard?.appointments || []}
+        />
       </Box>
 
       <Box>
