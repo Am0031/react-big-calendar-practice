@@ -12,6 +12,7 @@ export const Dashboard = () => {
   // context hook to get the date clicked on
   const [getDashboard, { data, loading, error }] =
     useLazyQuery(DASHBOARD_QUERY);
+
   const userId = "62f76f2cb4d77124d46d166d";
   useEffect(() => {
     async function fetchData() {
@@ -38,14 +39,14 @@ export const Dashboard = () => {
     >
       <Box>
         <Banner
-          title="WeCare App"
-          subTitle="We help you with your care management"
+          title="My Diary"
+          subTitle="See all your scheduled activities at a glance!"
         />
       </Box>
 
       <Box>
         <MyCalendar
-          title="My big calendar"
+          title="Calendar"
           data={data?.carerDashboard?.appointments || []}
         />
       </Box>

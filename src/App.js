@@ -13,7 +13,7 @@ export const App = () => {
     <ApolloProvider client={client}>
       <Router>
         <Routes>
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/" element={<Dashboard />} />
         </Routes>
       </Router>
     </ApolloProvider>

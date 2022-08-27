@@ -4,7 +4,7 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { TimelineEvent } from "./TimelineEvent";
 
-export const DayTimeline = ({ selectedDate, selectedDateData }) => {
+export const DayTimeline = ({ title, selectedDate, selectedDateData }) => {
   return (
     <Container
       className="myCustomHeight"
@@ -14,7 +14,7 @@ export const DayTimeline = ({ selectedDate, selectedDateData }) => {
       }}
     >
       <Typography variant="h5" component="h2" gutterBottom align="center">
-        {selectedDate}
+        {title} : {selectedDate}
       </Typography>
       <Timeline>
         {selectedDateData.map((event, i) => {
