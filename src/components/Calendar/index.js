@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
+
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { DayTimeline } from "../Timeline";
@@ -95,6 +96,14 @@ export const MyCalendar = ({ title, data }) => {
             onView={(e) => console.log("triggered with onView", e)}
             selectable
             popup={true}
+            eventPropGetter={(event) => {
+              const backgroundColor =
+                moment(new Date(event.start)).date() !==
+                moment(new Date(event.end)).date()
+                  ? "orange"
+                  : "blue";
+              return { style: { backgroundColor } };
+            }}
           />
         </div>
         <div className="timeline">
