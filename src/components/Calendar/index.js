@@ -5,6 +5,7 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { DayTimeline } from "../Timeline";
 import moment from "moment";
+import "./index.scss";
 // import { format } from "date-fns";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import { myEventsList } from "../../data/events";
@@ -80,6 +81,7 @@ export const MyCalendar = ({ title, data }) => {
             {title}
           </Typography>
           <Calendar
+            className="calendar"
             localizer={localizer}
             events={getRangeData(selectedMonth)}
             startAccessor="start"
