@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 
 import Container from "@mui/material/Container";
