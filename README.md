@@ -1,5 +1,6 @@
-# Getting Started with Create React App
+# Diary App
 
+This project is a practice app using react-big-calendar.
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
