@@ -77,9 +77,10 @@ export const MyCalendar = ({ title, data }) => {
         }}
       >
         <div className="big-calendar">
-          <Typography variant="h5" component="h2" gutterBottom align="center">
+          <Typography variant="h2" component="h2" gutterBottom align="center">
             {title}
           </Typography>
+
           <Calendar
             className="calendar"
             localizer={localizer}

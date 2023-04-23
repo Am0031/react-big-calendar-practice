@@ -31,7 +31,7 @@ export const Dashboard = () => {
       direction="column"
       justifyContent="space-evenly"
       alignItems="stretch"
-      spacing={8}
+      spacing={2}
       sx={{
         backgroundColor: "#FFFFFF",
         minHeight: "100vh",
@@ -46,7 +46,7 @@ export const Dashboard = () => {
 
       <Box>
         <MyCalendar
-          title="Calendar"
+          title="My Calendar"
           data={data?.carerDashboard?.appointments || []}
         />
       </Box>

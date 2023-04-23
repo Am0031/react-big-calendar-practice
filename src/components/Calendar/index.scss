@@ -1,6 +1,68 @@
 @import "react-big-calendar/lib/sass/styles";
 
+* {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color";
+  font-size: 14px;
+}
+:root {
+  margin: 0;
+}
+
+//parent div where calendar is inserted
+.big-calendar {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+//calendar top bar with buttons and month label
 .rbc-toolbar-label {
   font-weight: 900;
   color: red;
+}
+.rbc-btn-group * {
+  border: 2px solid purple !important;
+  background-color: rgb(156, 30, 156) !important;
+  color: white !important;
+  cursor: pointer;
+}
+
+//background colours on parent div
+.big-calendar {
+  background-color: lightgray;
+  padding: 5px;
+}
+.rbc-calendar {
+  background-color: white;
+}
+
+//calendar container - month view
+.rbc-calendar {
+  gap: 50px;
+}
+
+.rbc-month-view {
+  padding: 5px;
+}
+.rbc-month-header {
+  color: green;
+}
+
+//month cells - borders
+
+//month cells - colors
+.rbc-off-range-bg {
+  background-color: lightcyan !important;
+}
+.rbc-today {
+  background-color: orange !important;
+}
+//month cells - number label
+.rbc-date-cell {
+  text-align: center !important;
+  color: red;
+}
+.rbc-off-range {
+  color: blue !important;
 }

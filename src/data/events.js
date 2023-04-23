@@ -27,6 +27,26 @@ export const myEventsList = [
     title: "Tax review",
   },
   {
+    start: new Date("April 19, 2023 16:20:30"),
+    end: new Date("April 19, 2023 16:45:30"),
+    title: "Phone call",
+  },
+  {
+    start: new Date("April 19, 2023 14:30:30"),
+    end: new Date("April 19, 2023 15:45:30"),
+    title: "Brainstorming session",
+  },
+  {
+    start: new Date("April 19, 2023 11:15:30"),
+    end: new Date("April 19, 2023 11:45:30"),
+    title: "Brunch",
+  },
+  {
+    start: new Date("April 19, 2023 09:15:30"),
+    end: new Date("April 19, 2023 09:45:30"),
+    title: "Yoga",
+  },
+  {
     start: new Date("April 15, 2023 13:15:30"),
     end: new Date("April 15, 2023 16:45:30"),
     title: "Tax review",
