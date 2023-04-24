@@ -11,6 +11,7 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import { myEventsList } from "../../../data/events";
 import { Modal } from "@mui/material";
 import { Box } from "@mui/material";
+import { getEvents, getFormattedDate } from "../../../utils/getEvents";
 
 // Setup the localizer by providing the moment (or globalize, or Luxon) Object
 // to the correct localizer.
@@ -55,17 +56,8 @@ export const OtherCalendar = ({ title, data }) => {
   // console.log("view", selectedMonth, selectedWeek, selectedDay);
   //setting up the functions to handle the date(slot) selection
   const handleSelectDate = (event) => {
-    console.log("clicked slot", event);
-    const start = new Date(event.start);
-    const end = new Date(event.end);
-
-    const eventsForThisDay = myEventsList
-      .filter((item) => item.start >= start && item.end < end)
-      .sort(
-        (a, b) => new Date(a.start).getTime() < new Date(b.start).getTime()
-      );
-
-    const formattedDate = moment(start).format("DD-MM-YYYY");
+    const eventsForThisDay = getEvents(event);
+    const formattedDate = getFormattedDate(event);
     setSelectedDate(formattedDate);
     setSelectedDateData(eventsForThisDay);
   };

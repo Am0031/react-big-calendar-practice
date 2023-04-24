@@ -7,7 +7,6 @@ import TimelineDot from "@mui/lab/TimelineDot";
 import { TimelineOppositeContent } from "@mui/lab";
 
 export const TimelineEvent = ({ title, time }) => {
-  console.log(time);
   return (
     <TimelineItem>
       <TimelineOppositeContent color="text.secondary">
