@@ -3,6 +3,16 @@
 This project is a practice app using [react-big-calendar](https://www.npmjs.com/package/react-big-calendar).
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Technologies
+
+This project uses:
+
+- React: the usual packages installed on create-react-app and react-router-dom
+- MUI for page components
+- Date management packages: date-fns/moment
+- Calendar package: react-big-calendar
+- Styling: sass
+
 ## Available Scripts
 
 In the project directory, you can run:

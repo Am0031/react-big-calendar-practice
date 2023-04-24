@@ -9,14 +9,16 @@
   margin: 0;
 }
 
-//parent div where calendar is inserted
-.big-calendar {
+.styled-calendar-container {
   display: flex;
   flex-direction: column;
   gap: 50px;
 }
 
-//calendar top bar with buttons and month label
+.styled-calendar{
+  //parent div where calendar is inserted
+gap: 50px;
+  //calendar top bar with buttons and month label
 .rbc-toolbar-label {
   font-weight: 900;
   color: red;
@@ -65,4 +67,5 @@
 }
 .rbc-off-range {
   color: blue !important;
+}
 }

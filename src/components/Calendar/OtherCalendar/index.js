@@ -3,12 +3,12 @@ import { Calendar, momentLocalizer } from "react-big-calendar";
 
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import { DayTimeline } from "../Timeline";
+import { DayTimeline } from "../../Timeline";
 import moment from "moment";
 import "./index.scss";
 // import { format } from "date-fns";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import { myEventsList } from "../../data/events";
+import { myEventsList } from "../../../data/events";
 import { Modal } from "@mui/material";
 import { Box } from "@mui/material";
 
@@ -27,7 +27,12 @@ const style = {
   p: 4,
 };
 
-export const MyCalendar = ({ title, data }) => {
+const eventType = {
+  Outpatient: "blue",
+  Inpatient: "orange",
+  Daycase: "pink",
+};
+export const OtherCalendar = ({ title, data }) => {
   //setting up state variables for calendar date browsing
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedDateData, setSelectedDateData] = useState([]);
@@ -100,11 +105,7 @@ export const MyCalendar = ({ title, data }) => {
             selectable
             popup={true}
             eventPropGetter={(event) => {
-              const backgroundColor =
-                moment(new Date(event.start)).date() !==
-                moment(new Date(event.end)).date()
-                  ? "orange"
-                  : "blue";
+              const backgroundColor = `${eventType[event.type]}`;
               return { style: { backgroundColor } };
             }}
           />
