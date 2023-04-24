@@ -36,11 +36,15 @@ export const OtherCalendar = ({ title, data }) => {
   //setting up state variables for calendar date browsing
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedDateData, setSelectedDateData] = useState([]);
+  const [view, setView] = useState("month");
   //for month navigation
   const [selectedMonth, setSelectedMonth] = useState({
     start: moment().startOf("month").format("YYYY-MM-DD hh:mm"),
     end: moment().endOf("month").format("YYYY-MM-DD hh:mm"),
   });
+  //for other navigations
+  const [selectedWeek, setSelectedWeek] = useState();
+  const [selectedDay, setSelectedDay] = useState();
 
   //modal - for details of 1 event
   const [modalOpen, setModalOpen] = useState(false);
@@ -48,24 +52,18 @@ export const OtherCalendar = ({ title, data }) => {
   const handleModalClose = () => setModalOpen(false);
   const [selectedEvent, setSelectedEvent] = useState();
 
-  //move range to new month
-  const getRangeData = () => {
-    const filteredData = myEventsList.filter(
-      (item) =>
-        moment(item.start) > moment(selectedMonth.start) &&
-        moment(item.end) < moment(selectedMonth.end)
-    );
-    return filteredData;
-  };
-
+  // console.log("view", selectedMonth, selectedWeek, selectedDay);
   //setting up the functions to handle the date(slot) selection
   const handleSelectDate = (event) => {
+    console.log("clicked slot", event);
     const start = new Date(event.start);
     const end = new Date(event.end);
 
-    const eventsForThisDay = myEventsList.filter(
-      (item) => item.start >= start && item.end < end
-    );
+    const eventsForThisDay = myEventsList
+      .filter((item) => item.start >= start && item.end < end)
+      .sort(
+        (a, b) => new Date(a.start).getTime() < new Date(b.start).getTime()
+      );
 
     const formattedDate = moment(start).format("DD-MM-YYYY");
     setSelectedDate(formattedDate);
@@ -89,19 +87,25 @@ export const OtherCalendar = ({ title, data }) => {
           <Calendar
             className="calendar"
             localizer={localizer}
-            events={getRangeData(selectedMonth)}
+            events={myEventsList}
+            views={["month", "week", "day"]}
+            min={new Date(0, 0, 0, 8, 0, 0)}
+            max={new Date(0, 0, 0, 20, 0, 0)}
             startAccessor="start"
             endAccessor="end"
             style={{ height: 500 }}
-            views={["month"]}
             onSelectSlot={handleSelectDate}
             onSelectEvent={(eventInfo) => {
               setSelectedEvent(eventInfo);
               handleModalOpen();
             }}
             onNavigate={(e) => console.log("triggered with onNavigate", e)}
-            onRangeChange={(e) => setSelectedMonth(e)}
-            onView={(e) => console.log("triggered with onView", e)}
+            onRangeChange={(e) => {
+              if (e.start) setSelectedMonth(e);
+              if (e.length > 1) setSelectedWeek(e);
+              if (e.length === 1) setSelectedDay(e);
+            }}
+            onView={(e) => setView(e)}
             selectable
             popup={true}
             eventPropGetter={(event) => {

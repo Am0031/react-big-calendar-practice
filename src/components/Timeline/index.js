@@ -3,6 +3,7 @@ import Timeline from "@mui/lab/Timeline";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { TimelineEvent } from "./TimelineEvent";
+import moment from "moment";
 
 export const DayTimeline = ({ title, selectedDate, selectedDateData }) => {
   return (
@@ -18,7 +19,13 @@ export const DayTimeline = ({ title, selectedDate, selectedDateData }) => {
       </Typography>
       <Timeline>
         {selectedDateData.map((event, i) => {
-          return <TimelineEvent title={event.title} key={i} />;
+          return (
+            <TimelineEvent
+              title={event.title}
+              key={i}
+              time={moment(event.start).format("HH:mm")}
+            />
+          );
         })}
       </Timeline>
     </Container>
